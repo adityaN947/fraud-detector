@@ -114,12 +114,11 @@ function playSuccess(){
 }
 document.getElementById('playSoundBtn').onclick = playSuccess;
 
-/* Help button */
-document.getElementById('helpBtn').onclick = () => {
+/* Help button (if you add one) */
+const helpBtn = document.getElementById('helpBtn');
+if(helpBtn) helpBtn.onclick = () => {
   alert('Use the buttons to show each feature. Sound may require a click on the page first.');
 };
 
 /* accessibility: allow click anywhere to enable audio gesture */
-document.body.addEventListener('click', () => {
-  // small no-op to satisfy audio gesture policies in some browsers
-}, { once: true });
+document.body.addEventListener('click', () => {}, { once: true });
