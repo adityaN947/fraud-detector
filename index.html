@@ -7,66 +7,120 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>Transaction Security</h1>
-    <p class="subtitle">This site simulates features for presentation only (not real transactions).</p>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 48 48" aria-hidden="true"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#2b6cb0"/><stop offset="1" stop-color="#805ad5"/></linearGradient></defs><rect rx="10" width="48" height="48" fill="url(#g)"></rect><path d="M14 30c4-6 12-6 16 0" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+        <div>
+          <div class="title">Transaction Security</div>
+          <div class="subtitle">Interactive presentation — not a live payment system</div>
+        </div>
+      </div>
+      <nav aria-hidden="true">
+        <button class="ghost" id="helpBtn">How to use</button>
+      </nav>
+    </header>
 
-    <section class="card">
-      <h2>1 — Machine Learning Risk</h2>
-      <p>Click to simulate a risk score for a transaction.</p>
-      <button id="mlBtn">Simulate ML Risk</button>
-      <div id="mlResult" class="result">Risk score: —</div>
-    </section>
+    <main class="container">
+      <section class="grid">
+        <article class="card">
+          <div class="card-head">
+            <h3>Machine Learning Risk</h3>
+            <small>Simulated risk scoring</small>
+          </div>
+          <p class="muted">Click to generate a risk score and see the colored band.</p>
+          <div class="card-actions">
+            <button class="primary" id="mlBtn">Generate Score</button>
+            <div id="mlResult" class="badge">Risk score: —</div>
+          </div>
+        </article>
 
-    <section class="card">
-      <h2>2 — Device Fingerprinting</h2>
-      <p>Shows a simple browser/device fingerprint (simulated).</p>
-      <button id="fpBtn">Show Device Fingerprint</button>
-      <div id="fpResult" class="result">Fingerprint: —</div>
-    </section>
+        <article class="card">
+          <div class="card-head">
+            <h3>Device Fingerprint</h3>
+            <small>Fingerprint ID from browser signals</small>
+          </div>
+          <p class="muted">Shows a consistent fingerprint string for this browser/device.</p>
+          <div class="card-actions">
+            <button class="primary outline" id="fpBtn">Show Fingerprint</button>
+            <div id="fpResult" class="mono">Fingerprint: —</div>
+          </div>
+        </article>
 
-    <section class="card">
-      <h2>3 — SMS OTP (MFA)</h2>
-      <p>Simulated sending and entering of an OTP.</p>
-      <button id="otpSendBtn">Send OTP</button>
-      <div id="otpStatus" class="result">Status: —</div>
-    </section>
+        <article class="card">
+          <div class="card-head">
+            <h3>SMS OTP (MFA)</h3>
+            <small>Simulated OTP flow</small>
+          </div>
+          <p class="muted">Click to “send” an OTP and then enter it.</p>
+          <div class="card-actions">
+            <button class="primary" id="otpSendBtn">Send OTP</button>
+            <div id="otpStatus" class="status">Status: —</div>
+          </div>
+        </article>
 
-    <section class="card">
-      <h2>4 — Biometric Verification</h2>
-      <p>Simulated biometric verification (press the button).</p>
-      <button id="bioBtn">Verify Biometric</button>
-      <div id="bioStatus" class="result">Biometric: —</div>
-    </section>
+        <article class="card">
+          <div class="card-head">
+            <h3>Biometric Verification</h3>
+            <small>Simulated platform biometric</small>
+          </div>
+          <p class="muted">Simulates a biometric check (Accept or Reject).</p>
+          <div class="card-actions">
+            <button class="primary outline" id="bioBtn">Verify</button>
+            <div id="bioStatus" class="status">Biometric: —</div>
+          </div>
+        </article>
 
-    <section class="card">
-      <h2>5 — Dynamic QR Code</h2>
-      <p>Click to generate a QR token with a countdown (expires).</p>
-      <button id="qrBtn">Generate QR</button>
-      <div id="qrArea" class="qr-area">QR: —</div>
-      <div id="qrTimer" class="result">Timer: —</div>
-    </section>
+        <article class="card">
+          <div class="card-head">
+            <h3>Dynamic QR Code</h3>
+            <small>Token with countdown</small>
+          </div>
+          <p class="muted">Generate a timed token. It expires automatically.</p>
+          <div class="card-actions column">
+            <button class="primary" id="qrBtn">Generate QR</button>
+            <div id="qrWrap" class="qr-wrap">
+              <div id="qrArea" class="qr-box">QR: —</div>
+              <div id="qrTimer" class="timer">Timer: —</div>
+            </div>
+          </div>
+        </article>
 
-    <section class="card">
-      <h2>6 — Transaction Limits & Velocity</h2>
-      <p>Counters and limits for transactions.</p>
-      <button id="txnBtn">Make Transaction</button>
-      <div id="txnInfo" class="result">Transactions today: 0 — Limit: ₹10,000</div>
-    </section>
+        <article class="card wide">
+          <div class="card-head">
+            <h3>Transaction Limits & Velocity</h3>
+            <small>Per-day limits and quick transaction counter</small>
+          </div>
+          <p class="muted">Click "Make Transaction" repeatedly to show spending and limit checks.</p>
+          <div class="card-actions">
+            <button class="primary lg" id="txnBtn">Make Transaction</button>
+            <div id="txnInfo" class="info">Transactions today: 0 — Limit: ₹10,000</div>
+          </div>
+        </article>
 
-    <section class="card">
-      <h2>7 — Audio Alert</h2>
-      <p>Plays a short sound on successful transaction.</p>
-      <button id="playSoundBtn">Play Success Sound</button>
-    </section>
+        <article class="card centered">
+          <div class="card-head">
+            <h3>Audio Alert</h3>
+            <small>Play a success chime</small>
+          </div>
+          <div class="card-actions">
+            <button class="primary" id="playSoundBtn">Play Success Sound</button>
+            <div class="muted" style="margin-top:8px">If sound is blocked, click anywhere on the page first.</div>
+          </div>
+        </article>
+      </section>
 
-    <footer>
-      <small>For presentation · Deploy to Vercel following the instructions</small>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </main>
+
+    <footer class="footer">
+      <div>Presentation only · UI interactions are simulated</div>
+      <div class="links">Replace files & redeploy to update content</div>
     </footer>
   </div>
 
   <audio id="successAudio">
-    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEARKwAABCxAgAEABAAZGF0YQAAAAA=" />
+    <source src="data:audio/wav;base64,UklGRjQAAABXQVZFZm10IBAAAAABAAEAESsAACJWAAACABAAZGF0YQAAAAA=" />
   </audio>
 
   <script src="script.js"></script>
